@@ -48,67 +48,50 @@ onMounted(() => {
 <template>
 	<main class="app">
 		
-		<section class="greeting">
-			<h2 class="title">
-				What's up, <input type="text" id="name" placeholder="Name here" v-model="name">
-			</h2>
-		</section>
+	<section class="greeting">
+		<h2 class="title">
+			What's up, <input type="text" id="name" placeholder="Name here" v-model="name">
+		</h2>
+	</section>
 
-		<section class="create-todo">
-			<h3>CREATE A TODO</h3>
+	<section class="create-todo">
 
-			<form id="new-todo-form" @submit.prevent="addTodo">
-				<h4>What's on your todo list?</h4>
-				<input 
-					type="text" 
-					name="content" 
-					id="content" 
-					placeholder="e.g. make a video"
-					v-model="input_content" />
-				
-				<h4>Pick a category</h4>
+<h2>What's on your todo list?</h2>
+	<form id="new-todo-form" @submit.prevent="addTodo">
+		<div class="form-wrapper">
+			<div class="flex-item">
+				<input type="text" name="content" id="content" placeholder="e.g. make a ToDo" v-model="input_content" />
+			</div>	
+			<div class="flex-item">
+				<p class="category-title">Pick a category</p>
 				<div class="options">
-
 					<label>
-						<input 
-							type="radio" 
-							name="category" 
-							id="category1" 
-							value="business"
-							v-model="input_category" />
+						<input type="radio" name="category" id="category1" value="business" v-model="input_category" />
 						<span class="bubble business"></span>
 						<div>Business</div>
 					</label>
 
 					<label>
-						<input 
-							type="radio" 
-							name="category" 
-							id="category2" 
-							value="personal"
-							v-model="input_category" />
+						<input type="radio" name="category" id="category2" value="personal" v-model="input_category" />
 						<span class="bubble personal"></span>
 						<div>Personal</div>
 					</label>
-
 				</div>
+			</div>
+		</div>
+		<input type="submit" value="Add todo" />
+	</form>
 
-				<input type="submit" value="Add todo" />
-			</form>
-		</section>
+</section>
 
 		<section class="todo-list">
 			<h3>TODO LIST</h3>
 			<div class="list" id="todo-list">
 
-				<div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`">
+				<div v-for="todo in todos_asc" :key="todo.category" :class="`todo-item ${todo.done && 'done'}`">
 					<label>
 						<input type="checkbox" v-model="todo.done" />
-						<span :class="`bubble ${
-							todo.category == 'business' 
-								? 'business' 
-								: 'personal'
-						}`"></span>
+						<span :class="`bubble ${todo.category == 'business' ? 'business' : 'personal'}`"></span>
 					</label>
 
 					<div class="todo-content">

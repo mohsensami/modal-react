@@ -1,16 +1,16 @@
 :root {
-	--primary: #EA40A4;
+	--primary: #37a3aa;
 	--business: #3A82EE;
 	--personal: var(--primary);
 	--light: #EEE;
 	--grey: #888;
 	--dark: #313154;
-	--danger: #ff5b57;
+	--danger: #69a5b2;
 
 	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
 	--business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
-	--personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+	--personal-glow: 0px 0px 4px rgba(19, 113, 163, 0.75);
 }
 
 * {
@@ -72,34 +72,43 @@ h4 {
 }
 
 .create-todo input[type="text"] {
-	display: block;
-	width: 100%;
-	font-size: 1.125rem;
-	padding: 1rem 1.5rem;
-	color: var(--dark);
-	background-color: #FFF;
-	border-radius: 0.5rem;
-	box-shadow: var(--shadow);
-	margin-bottom: 1.5rem;
+    display: block;
+    width: 100%;
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--danger);
 }
 
-.create-todo .options {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 1rem;
-	margin-bottom: 1.5rem;
+.form-wrapper {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 5px;
+    box-shadow: #d5d5d5 3px 5px 23px;
 }
 
-.create-todo .options label {
+.flex-item {
+	flex: 1;
+	margin: 0 17px;
+}
+
+.form-wrapper .category-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.form-wrapper .options {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 1.5rem;
-	background-color: #FFF;
-	border-radius: 0.5rem;
-	box-shadow: var(--shadow);
-	cursor: pointer;
+    justify-content: space-evenly;
 }
 
 input[type="radio"],
@@ -159,7 +168,7 @@ input:checked ~ .bubble::after {
 	padding: 1rem 1.5rem;
 	color: #FFF;
 	background-color: var(--primary);
-	border-radius: 0.5rem;
+	border-radius: 5px;
 	box-shadow: var(--personal-glow);
 	cursor: pointer;
 	transition: 0.2s ease-in-out;
@@ -178,7 +187,7 @@ input:checked ~ .bubble::after {
 	align-items: center;
 	background-color: #FFF;
 	padding: 1rem;
-	border-radius: 0.5rem;
+	border-radius: 5px;
 	box-shadow: var(--shadow);
 	margin-bottom: 1rem;
 }
@@ -228,4 +237,9 @@ input:checked ~ .bubble::after {
 .todo-item.done .todo-content input {
 	text-decoration: line-through;
 	color: var(--grey);
+}
+@media only screen and (max-width: 800px) {
+	.form-wrapper {
+		display: block;
+	}
 }
