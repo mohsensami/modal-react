@@ -1,7 +1,7 @@
 <template>
   <main class="app">
     <section>
-      <h2 class="bg-indigo-600 text-white text-center py-2">Hello <input class="focus:outline-0  bg-indigo-600" type="text" id="name" placeholder="Name here" v-model="name" /></h2>
+      <h2 class="bg-indigo-600 text-white text-center py-2">Hello <input class="focus:outline-0 bg-indigo-600" type="text" id="name" placeholder="Name here" v-model="name" /></h2>
       <h2 class="bg-indigo-500 text-center text-white py-4">What's on your todo list?</h2>
     </section>
     <section>
@@ -17,7 +17,7 @@
                 <div class="flex flex-col gap-2">
                   <div>
                     <label class="flex items-center">
-                      <input class="hidden peer" type="radio" name="category" id="category1" value="business" checked="checked" v-model="input_category" />
+                      <input class="hidden peer" type="radio" name="category" id="category1" value="business" checked v-model="input_category" />
                       <div class="cursor-pointer px-2 py-1 text-xs">Business</div>
                       <span class="hidden peer-checked:block text-green-600 font-bold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -29,11 +29,11 @@
                   <div>
                     <label class="flex items-center">
                       <input class="hidden peer" type="radio" name="category" id="category2" value="personal" v-model="input_category" />
-                      <div class=" cursor-pointer px-2 py-1 text-xs">Personal</div>
-					  <span class="hidden peer-checked:block text-green-600 font-bold">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg></span>
+                      <div class="cursor-pointer px-2 py-1 text-xs">Personal</div>
+                      <span class="hidden peer-checked:block text-green-600 font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg
+                      ></span>
                     </label>
                   </div>
                 </div>
@@ -46,14 +46,14 @@
           <h3 class="bg-indigo-300 text-center text-white py-2">TODO LIST</h3>
           <div class="p-8">
             <div class="flex flex-col gap-4" id="todo-list">
-              <div class="flex jus" v-for="todo in todos_asc" :key="todo.category" :class="`todo-item ${todo.done && 'done'}`">
+              <div class="flex items-center" v-for="todo in todos_asc" :key="todo.category" :class="`todo-item ${todo.done && 'done'}`">
                 <label class="">
                   <input type="checkbox" v-model="todo.done" />
                   <span :class="`bubble ${todo.category == 'business' ? 'business' : 'personal'}`"></span>
                 </label>
 
                 <div class="todo-content flex-grow">
-                  <input class="w-full p-2" type="text" v-model="todo.content" />
+                  <input class="w-full p-2 bg-indigo-200 focus:outline-0" :class="{'completed' : todo.done}" type="text" v-model="todo.content" />
                 </div>
 
                 <div class="actions">
@@ -126,3 +126,9 @@ onMounted(() => {
 </script>
 
 
+<style scoped>
+.completed {
+    color: #767676;
+    text-decoration: line-through;
+}
+</style>
