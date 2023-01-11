@@ -42,17 +42,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed, watch, reactive } from "vue";
-
+import {todoType} from './types/Todo'
 
 const name = ref<string | number>("");
 
 const input_content = ref("");
 
-interface todoType {
-  id: number|string,
-  content: number|string,
-  done: boolean
-}
+
 
 // const todos_asc = computed(() =>
 //   todos.value.sort((a, b) => {
