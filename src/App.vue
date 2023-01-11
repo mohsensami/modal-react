@@ -19,13 +19,10 @@
 
         <div class="w-screen">
           <div class="mx-auto flex flex-col gap-2" id="todo-list">
-            <div class="flex items-center bg-blue-500 w-full" v-for="todo in todos" :key="todo.content" :class="`todo-item ${todo.done && 'done'}`">
-              <label class="">
-                <input type="checkbox" v-model="todo.done" />
-              </label>
+            <div @click="checkTodo(todo.id)" class="flex items-center bg-blue-500 w-full" v-for="todo in todos" :key="todo.id" :class="{'completed': todo.done}" >
 
               <div class="todo-content flex-grow">
-                <input class="w-full p-2 bg-blue-200 focus:outline-0" :class="{ completed: todo.done }" type="text" v-model="todo.content" />
+                {{todo.content}}
               </div>
 
               <div class="actions">
@@ -46,9 +43,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch, reactive } from "vue";
 
-const todos = reactive<todoType[]>([
-  {id: 1, content: 'watch TV', done: false}
-]);
 
 const name = ref<string | number>("");
 
@@ -62,23 +56,28 @@ interface todoType {
 
 // const todos_asc = computed(() =>
 //   todos.value.sort((a, b) => {
-//     return a.createdAt - b.createdAt;
+  //     return a.createdAt - b.createdAt;
 //   })
 // );
 
-watch(name, (newVal: string) => {
-  localStorage.setItem("name", newVal);
-});
+// watch(name, (newVal: string) => {
+  //   localStorage.setItem("name", newVal);
+// });
 
-watch(
-  todos,
-  (newVal) => {
-    localStorage.setItem("todos", JSON.stringify(newVal));
-  },
-  {
-    deep: true,
-  }
-);
+// watch(
+  //   todos,
+//   (newVal) => {
+  //     localStorage.setItem("todos", JSON.stringify(newVal));
+//   },
+//   {
+  //     deep: true,
+//   }
+// );
+
+const todos = reactive<todoType[]>([
+  {id: 1, content: 'watch TV', done: false},
+  {id: 2, content: 'playing football', done: false},
+]);
 
 const addTodo = () => {
   if (input_content.value.trim() === "") {
@@ -93,14 +92,22 @@ const addTodo = () => {
   input_content.value = ""
 };
 
+const checkTodo = (todoId:number) => {
+  todos.map((todo)=> {
+    if (todo.id == todoId) {
+      todo.done = !todo.done
+    }
+  })
+};
+
 const removeTodo = (todoId:number) => {
   todos.splice(todoId, 1)
 };
 
-onMounted(() => {
-  name.value = localStorage.getItem("name") || "";
-  todos.value = JSON.parse(localStorage.getItem("todos")) || [];
-});
+// onMounted(() => {
+//   name.value = localStorage.getItem("name") || "";
+//   todos.value = JSON.parse(localStorage.getItem("todos")) || [];
+// });
 </script>
 
 
