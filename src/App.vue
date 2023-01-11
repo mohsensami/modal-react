@@ -56,9 +56,9 @@ const input_content = ref("");
 //   })
 // );
 
-// watch(name, (newVal: string) => {
-  //   localStorage.setItem("name", newVal);
-// });
+watch(name, (newVal: string) => {
+    localStorage.setItem("name", newVal);
+});
 
 // watch(
   //   todos,
@@ -102,10 +102,10 @@ const removeTodo = (todoItem:todoType) => {
   todos.splice(todoIndex, 1)
 };
 
-// onMounted(() => {
-//   name.value = localStorage.getItem("name") || "";
-//   todos.value = JSON.parse(localStorage.getItem("todos")) || [];
-// });
+onMounted(() => {
+  name.value = localStorage.getItem("name") || "";
+  // todos.value = JSON.parse(localStorage.getItem("todos")) || [];
+});
 </script>
 
 
