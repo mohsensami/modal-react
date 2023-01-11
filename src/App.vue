@@ -19,14 +19,14 @@
 
         <div class="w-screen">
           <div class="mx-auto flex flex-col gap-2" id="todo-list">
-            <div @click="checkTodo(todo.id)" class="flex items-center bg-blue-500 w-full" v-for="todo in todos" :key="todo.id" :class="{'completed': todo.done}" >
+            <div class="bg-blue-500 w-full flex" v-for="todo in todos" :key="todo.id" :class="{'completed': todo.done}" >
 
-              <div class="todo-content flex-grow">
+              <div @click="checkTodo(todo.id)" class="todo-content flex-grow cursor-pointer">
                 {{todo.content}}
               </div>
 
               <div class="actions">
-                <button class="bg-red-500 text-white p-2" @click="removeTodo(todo.id)">
+                <button class="bg-red-500 text-white p-2" @click="removeTodo(todo)">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
@@ -75,8 +75,8 @@ interface todoType {
 // );
 
 const todos = reactive<todoType[]>([
-  {id: 1, content: 'watch TV', done: false},
-  {id: 2, content: 'playing football', done: false},
+  // {id: 1, content: 'watch TV', done: false},
+  // {id: 2, content: 'playing football', done: false},
 ]);
 
 const addTodo = () => {
@@ -100,8 +100,9 @@ const checkTodo = (todoId:number) => {
   })
 };
 
-const removeTodo = (todoId:number) => {
-  todos.splice(todoId, 1)
+const removeTodo = (todoItem:todoType) => {
+  const todoIndex = todos.findIndex(todo => todo === todoItem);
+  todos.splice(todoIndex, 1)
 };
 
 // onMounted(() => {
