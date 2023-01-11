@@ -16,25 +16,24 @@
             </div>
           </form>
         </div>
-        <div class="">
-          <div class="">
-            <div class="flex flex-col gap-4" id="todo-list">
-              <div class="flex items-center bg-blue-500 w-full" v-for="todo in todos_asc" :key="todo.content" :class="`todo-item ${todo.done && 'done'}`">
-                <label class="">
-                  <input type="checkbox" v-model="todo.done" />
-                </label>
 
-                <div class="todo-content flex-grow">
-                  <input class="w-full p-2 bg-blue-200 focus:outline-0" :class="{'completed' : todo.done}" type="text" v-model="todo.content" />
-                </div>
+        <div class="w-screen">
+          <div class="mx-auto flex flex-col gap-2" id="todo-list">
+            <div class="flex items-center bg-blue-500 w-full" v-for="todo in todos" :key="todo.content" :class="`todo-item ${todo.done && 'done'}`">
+              <label class="">
+                <input type="checkbox" v-model="todo.done" />
+              </label>
 
-                <div class="actions">
-                  <button class="bg-red-500 text-white p-2" @click="removeTodo(todo)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
+              <div class="todo-content flex-grow">
+                <input class="w-full p-2 bg-blue-200 focus:outline-0" :class="{ completed: todo.done }" type="text" v-model="todo.content" />
+              </div>
+
+              <div class="actions">
+                <button class="bg-red-500 text-white p-2" @click="removeTodo(todo.id)">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -45,20 +44,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from "vue";
+import { ref, onMounted, computed, watch, reactive } from "vue";
 
-const todos = ref([]);
-const name = ref<string|number>("");
+const todos = reactive<todoType[]>([
+  {id: 1, content: 'watch TV', done: false}
+]);
+
+const name = ref<string | number>("");
 
 const input_content = ref("");
 
-const todos_asc = computed(() =>
-  todos.value.sort((a, b) => {
-    return a.createdAt - b.createdAt;
-  })
-);
+interface todoType {
+  id: number|string,
+  content: number|string,
+  done: boolean
+}
 
-watch(name, (newVal:string) => {
+// const todos_asc = computed(() =>
+//   todos.value.sort((a, b) => {
+//     return a.createdAt - b.createdAt;
+//   })
+// );
+
+watch(name, (newVal: string) => {
   localStorage.setItem("name", newVal);
 });
 
@@ -77,16 +85,16 @@ const addTodo = () => {
     return;
   }
 
-  todos.value.push({
+  todos.push({
+    id: todos.length + 1,
     content: input_content.value,
     done: false,
-    editable: false,
-    createdAt: new Date().getTime(),
   });
+  input_content.value = ""
 };
 
-const removeTodo = (todo) => {
-  todos.value = todos.value.filter((t) => t !== todo);
+const removeTodo = (todoId:number) => {
+  todos.splice(todoId, 1)
 };
 
 onMounted(() => {
@@ -98,7 +106,7 @@ onMounted(() => {
 
 <style scoped>
 .completed {
-    color: #767676;
-    text-decoration: line-through;
+  color: #767676;
+  text-decoration: line-through;
 }
 </style>
