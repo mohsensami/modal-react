@@ -1,25 +1,25 @@
 <template>
   <main class="app">
     <section>
-      <h2 class="bg-blue-600 text-white text-left pl-2 py-2">Hello <input class="focus:outline-0 bg-blue-600" type="text" id="name" placeholder="Name here" v-model="name" /></h2>
+      <h2 class="bg-gray-600 text-white text-left pl-2 py-2">Hello <input class="focus:outline-0 bg-gray-600" type="text" id="name" placeholder="Name here" v-model="name" /></h2>
     </section>
     <section>
       <div class="grid grid-cols-12">
-        <div class="col-span-12 bg-blue-100">
+        <div class="col-span-12 bg-gray-100">
           <form class="p-16" id="new-todo-form" @submit.prevent="addTodo">
             <div class="">
-              <h2 class="text-center text-2xl py-2">MY TODO LIST</h2>
+              <h2 class="text-center text-2xl py-4">MY TODO LIST</h2>
               <div class="flex">
-                <input class="w-full p-4" type="text" name="content" id="content" placeholder="e.g. make a ToDo" v-model="input_content" />
-                <input class="bg-blue-700 text-white p-2 cursor-pointer" type="submit" value="Add todo" />
+                <input class="w-full py-2 px-4" type="text" name="content" id="content" placeholder="e.g. make a ToDo" v-model="input_content" />
+                <input class="bg-gray-700 text-white cursor-pointer py-1 px-8" type="submit" value="Add todo" />
               </div>
             </div>
           </form>
         </div>
 
-        <div class="w-screen">
-          <div class="mx-auto flex flex-col gap-2" id="todo-list">
-            <div class="bg-blue-500 w-full flex" v-for="todo in todos" :key="todo.id" :class="{'completed': todo.done}" >
+        <div class="col-span-12 bg-gray-100">
+          <div class="mx-auto flex flex-col gap-1" id="todo-list">
+            <div class="bg-gray-500 w-full flex text-white text-center items-center" v-for="todo in todos" :key="todo.id" :class="{'completed': todo.done}" >
 
               <div @click="checkTodo(todo.id)" class="todo-content flex-grow cursor-pointer">
                 {{todo.content}}
@@ -75,8 +75,9 @@ interface todoType {
 // );
 
 const todos = reactive<todoType[]>([
-  // {id: 1, content: 'watch TV', done: false},
-  // {id: 2, content: 'playing football', done: false},
+  {id: 1, content: 'watch TV', done: false},
+  {id: 2, content: 'playing football', done: false},
+  {id: 3, content: 'Learning javascript', done: false},
 ]);
 
 const addTodo = () => {
@@ -113,8 +114,11 @@ const removeTodo = (todoItem:todoType) => {
 
 
 <style scoped>
+* {
+  font-family: helvetica;
+}
 .completed {
-  color: #767676;
+  color: #ffffff;
   text-decoration: line-through;
 }
 </style>
