@@ -1,29 +1,88 @@
-# Vue 3 Todo by LocalStorage
+# Modal React
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A customizable modal component built with React and TypeScript. The component uses CSS Modules for styling.
 
-## Recommended IDE Setup
+## Manual Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+1- Add the Modal Component Files
 
-### App Preview :
+-   Modal.tsx
+-   Modal.module.css
+-   App.tsx (Example usage)
+-   App.css (Optional, for styling the example)
 
-<table width="100%"> 
-<tr>
-<td width="50%">      
-&nbsp; 
-<br>
-<p align="center">
-  Start app
-</p>
-<img src="https://github.com/mohsensami/vue-todo/blob/main/screenshots/screenshot1.png?raw=true">
-</td> 
-<td width="50%">
-<br>
-<p align="center">
-  End app
-</p>
-<img src="https://github.com/mohsensami/vue-todo/blob/main/screenshots/screenshot2.png?raw=true">  
-</td>
-</table>
- 
+2- Ensure your project supports CSS Modules. This can typically be done by configuring your build tool (e.g., Webpack or Create React App).
+
+## Demo
+
+[**Live Demo**](#)
+
+![modal-react]()
+
+## Installation
+
+To use the Modal component, you need to have a React environment set up. You can then add the Modal component files to your project.
+
+The package can be installed via [npm](https://github.com/npm/cli):
+
+```
+npm install modal-react
+```
+
+## Usage
+
+React Component:
+
+```javascript
+import React, { useState } from 'react';
+import Modal from 'Modal-react';
+
+const App: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    return (
+        <div className="App">
+            <h1>My App</h1>
+            <button onClick={openModal}>Open Modal</button>
+            <Modal
+                isOpen={isModalOpen}
+                title="My Modal"
+                onClose={closeModal}
+                footer={<button onClick={closeModal}>Close</button>}
+            >
+                <p>This is the modal content.</p>
+            </Modal>
+        </div>
+    );
+};
+
+export default App;
+```
+
+## Props
+
+Here are the props that can be passed to the `<Modal />` component:
+
+| Name       | Type         | Required | Description                                                |
+| :--------- | :----------- | :------- | :--------------------------------------------------------- |
+| `isOpen`   | `boolean`    | True     | Determines whether the modal is visible or not.            |
+| `title`    | `string`     | False    | The title of the modal, displayed in the header.           |
+| `children` | `ReactNode`  | False    | The content to display inside the modal.                   |
+| `onClose`  | `() => void` | False    | Function to call when the modal is requested to be closed. |
+| `footer`   | `ReactNode`  | False    | (optional): The content to display in the modal footer.    |
+
+## Authors
+
+-   [@mohsensami](https://github.com/mohsensami)
+
+## Contributing
+
+If you want to contribute to this project and make it better, your help is very welcome. Create an issue or submit a pull request.

@@ -1,21 +1,63 @@
 {
-  "name": "todo-app",
-  "private": true,
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "typescript": "^4.9.4",
-    "vue": "^3.2.25"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.17",
-    "tailwindcss": "^3.1.8",
-    "vite": "^2.9.9"
-  }
+    "name": "modal-react",
+    "version": "1.0.0",
+    "private": false,
+    "description": "A customizable modal component built with React and TypeScript. The component uses CSS Modules for styling.",
+    "main": "./dist/modal-react.umd.js",
+    "module": "./dist/modal-react.es.js",
+    "types": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mohsensami/modal-react"
+    },
+    "exports": {
+        ".": {
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "build",
+        "dist",
+        "README.md"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "keywords": [
+        "react",
+        "modal"
+    ],
+    "author": "Mohsen Sami",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
+        "build": "tsc && vite build",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "path": "^0.12.7",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "vite-plugin-dts": "^3.9.1",
+        "vite-plugin-lib-inject-css": "^2.1.1"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.66",
+        "@types/react-dom": "^18.2.22",
+        "@typescript-eslint/eslint-plugin": "^7.2.0",
+        "@typescript-eslint/parser": "^7.2.0",
+        "@vitejs/plugin-react-swc": "^3.5.0",
+        "eslint": "^8.57.0",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.6",
+        "gh-pages": "^6.1.1",
+        "typescript": "^5.2.2",
+        "vite": "^5.2.0"
+    }
 }
