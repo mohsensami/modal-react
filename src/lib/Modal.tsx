@@ -9,16 +9,17 @@ interface ModalProps {
     children: ReactNode;
     onClose: () => void;
     footer?: ReactNode;
+    animationName: string;
 }
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, footer }) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, footer, animationName }) => {
     if (!isOpen) {
         return null;
     }
 
     return (
         <div className={styles.modalBackdrop} onClick={onClose}>
-            <div className="animate__animated animate__fadeInDown xxxxxx">
+            <div className={` animate__animated animate__${animationName} xxxxxx`}>
                 <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                     <div className={styles.modalHeader}>
                         <h2 className={styles.modalTitle}>{title}</h2>

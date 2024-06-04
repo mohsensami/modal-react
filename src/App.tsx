@@ -22,6 +22,7 @@ const App: React.FC = () => {
                 title="My Modal"
                 onClose={closeModal}
                 footer={<button onClick={closeModal}>Close</button>}
+                animationName="fadeInDown"
             >
                 <p>This is the modal content.</p>
             </Modal>
