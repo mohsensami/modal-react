@@ -10,16 +10,32 @@ interface ModalProps {
     onClose: () => void;
     footer?: ReactNode;
     animationName: string;
+    animateDuration?: string;
 }
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, footer, animationName }) => {
+export const Modal: React.FC<ModalProps> = ({
+    isOpen,
+    title,
+    children,
+    onClose,
+    footer,
+    animationName,
+    animateDuration = '0.3',
+}) => {
     if (!isOpen) {
         return null;
     }
 
     return (
         <div className={styles.modalBackdrop} onClick={onClose}>
-            <div className={` animate__animated animate__${animationName} xxxxxx`}>
+            <div
+                style={
+                    {
+                        '--animate-duration': `${animateDuration}s`,
+                    } as React.CSSProperties
+                }
+                className={` animate__animated animate__${animationName}`}
+            >
                 <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                     <div className={styles.modalHeader}>
                         <h2 className={styles.modalTitle}>{title}</h2>

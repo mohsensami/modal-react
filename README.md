@@ -57,7 +57,8 @@ const App: React.FC = () => {
                 title="My Modal"
                 onClose={closeModal}
                 footer={<button onClick={closeModal}>Close</button>}
-                animationName="fadeInDown"
+                animationName="bounceInDown"
+                animateDuration="0.4"
             >
                 <p>This is the modal content.</p>
             </Modal>
@@ -72,14 +73,15 @@ export default App;
 
 Here are the props that can be passed to the `<Modal />` component:
 
-| Name            | Type         | Required | Description                                                |
-| :-------------- | :----------- | :------- | :--------------------------------------------------------- |
-| `isOpen`        | `boolean`    | True     | Determines whether the modal is visible or not.            |
-| `title`         | `string`     | False    | The title of the modal, displayed in the header.           |
-| `children`      | `ReactNode`  | False    | The content to display inside the modal.                   |
-| `onClose`       | `() => void` | False    | Function to call when the modal is requested to be closed. |
-| `footer`        | `ReactNode`  | False    | (optional): The content to display in the modal footer.    |
-| `animationName` | `string`     | True     | determine Amination name.                                  |
+| Name              | Type         | Required | Description                                                                                                                                                                                    |
+| :---------------- | :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isOpen`          | `boolean`    | True     | Determines whether the modal is visible or not.                                                                                                                                                |
+| `title`           | `string`     | False    | The title of the modal, displayed in the header.                                                                                                                                               |
+| `children`        | `ReactNode`  | False    | The content to display inside the modal.                                                                                                                                                       |
+| `onClose`         | `() => void` | False    | Function to call when the modal is requested to be closed.                                                                                                                                     |
+| `footer`          | `ReactNode`  | False    | (optional): The content to display in the modal footer.                                                                                                                                        |
+| `animationName`   | `string`     | True     | The name of the animation to use for the modal. Possible values include: 'fadeIn', 'fadeOut', 'slideInLeft', 'slideInRight', 'slideOutLeft', 'slideOutRight', and other valid animation names. |
+| `animateDuration` | `string`     | False    | You can update the duration of animation. (Default is 0.3s)                                                                                                                                    |
 
 ## Authors
 

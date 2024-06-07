@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from './lib/Modal';
-import './App.css';
+// import './App.css';
 
 const App: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,7 +22,8 @@ const App: React.FC = () => {
                 title="My Modal"
                 onClose={closeModal}
                 footer={<button onClick={closeModal}>Close</button>}
-                animationName="fadeInDown"
+                animationName="bounceInDown"
+                animateDuration="0.9"
             >
                 <p>This is the modal content.</p>
             </Modal>
