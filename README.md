@@ -15,10 +15,9 @@ A customizable modal component built with React and TypeScript. The component us
 
 ## Demo
 
-<video width="100" height="240">
-  <source src="https://github.com/mrmohsensami/react-modal/raw/main/video.webm" type="video/webm">
-Your browser does not support the video tag.
-</video>
+<div align="center">
+    <img src="https://github.com/mrmohsensami/react-modal/raw/main/video.gif" width="">
+</div>
 
 ## Installation
 
