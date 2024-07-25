@@ -83,6 +83,8 @@ Here are the props that can be passed to the `<Modal />` component:
 | `animationName`   | `string`     | True     | The name of the animation to use for the modal. Possible values include: 'fadeIn', 'fadeOut', 'slideInLeft', 'slideInRight', 'slideOutLeft', 'slideOutRight', and other valid animation names. |
 | `animateDuration` | `string`     | False    | You can update the duration of animation. (Default is 0.3s)                                                                                                                                    |
 
+-   [CSS Animation](https://animate.style/)
+
 ## Authors
 
 -   [@mohsensami](https://github.com/mohsensami)
