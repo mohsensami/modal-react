@@ -6,10 +6,10 @@ A customizable modal component built with React and TypeScript. The component us
 
 1- Add the Modal Component Files
 
--   Modal.tsx
--   Modal.module.css
--   App.tsx (Example usage)
--   App.css (Optional, for styling the example)
+- Modal.tsx
+- Modal.module.css
+- App.tsx (Example usage)
+- App.css (Optional, for styling the example)
 
 2- Ensure your project supports CSS Modules. This can typically be done by configuring your build tool (e.g., Webpack or Create React App).
 
@@ -34,36 +34,37 @@ npm install modal-react
 React Component:
 
 ```javascript
-import React, { useState } from 'react';
-import Modal from 'Modal-react';
+import React, { useState } from "react";
+import Modal from "Modal-react";
 
 const App: React.FC = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-    return (
-        <div className="App">
-            <h1>My App</h1>
-            <button onClick={openModal}>Open Modal</button>
-            <Modal
-                isOpen={isModalOpen}
-                title="My Modal"
-                onClose={closeModal}
-                footer={<button onClick={closeModal}>Close</button>}
-                animationName="bounceInDown"
-                animateDuration="0.4"
-            >
-                <p>This is the modal content.</p>
-            </Modal>
-        </div>
-    );
+  return (
+    <div className="App">
+      <h1>My App</h1>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={isModalOpen}
+        title="My Modal"
+        onClose={closeModal}
+        footer={<button onClick={closeModal}>Close</button>}
+        animationName="bounceInDown"
+        animateDuration="0.4"
+        size="md"
+      >
+        <p>This is the modal content.</p>
+      </Modal>
+    </div>
+  );
 };
 
 export default App;
@@ -81,13 +82,14 @@ Here are the props that can be passed to the `<Modal />` component:
 | `onClose`         | `() => void` | False    | Function to call when the modal is requested to be closed.                                                                                                                                     |
 | `footer`          | `ReactNode`  | False    | (optional): The content to display in the modal footer.                                                                                                                                        |
 | `animationName`   | `string`     | True     | The name of the animation to use for the modal. Possible values include: 'fadeIn', 'fadeOut', 'slideInLeft', 'slideInRight', 'slideOutLeft', 'slideOutRight', and other valid animation names. |
+| `size`            | `string`     | False    | The size of the modal. Possible values: 'sm' (small), 'md' (medium), 'lg' (large). Default is 'md'.                                                                                            |
 | `animateDuration` | `string`     | False    | You can update the duration of animation. (Default is 0.3s)                                                                                                                                    |
 
--   [CSS Animation](https://animate.style/)
+- [CSS Animation](https://animate.style/)
 
 ## Authors
 
--   [@mohsensami](https://github.com/mohsensami)
+- [@mohsensami](https://github.com/mohsensami)
 
 ## Contributing
 
