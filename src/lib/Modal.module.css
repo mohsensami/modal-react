@@ -20,15 +20,15 @@
 }
 
 .modalContentSM {
-  max-width: 300px;
+  width: 650px;
 }
 
 .modalContentMD {
-  max-width: 500px;
+  width: 1024px;
 }
 
 .modalContentLG {
-  max-width: 800px;
+  width: 1600px;
 }
 
 .modalHeader {

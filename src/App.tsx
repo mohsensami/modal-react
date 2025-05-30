@@ -24,7 +24,7 @@ const App: React.FC = () => {
         footer={<button onClick={closeModal}>Close</button>}
         animationName="bounceInDown"
         animateDuration="0.9"
-        size="lg"
+        size="sm"
       >
         <p>This is the modal content.</p>
       </Modal>
