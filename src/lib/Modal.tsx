@@ -14,6 +14,7 @@ interface ModalProps {
   animationName: string;
   animateDuration?: string;
   size?: ModalSize;
+  showCloseButton?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -25,6 +26,7 @@ export const Modal: React.FC<ModalProps> = ({
   animationName,
   animateDuration = "0.3",
   size = "md",
+  showCloseButton = true,
 }) => {
   if (!isOpen) {
     return null;
@@ -48,9 +50,11 @@ export const Modal: React.FC<ModalProps> = ({
         >
           <div className={styles.modalHeader}>
             <h2 className={styles.modalTitle}>{title}</h2>
-            <button className={styles.closeButton} onClick={onClose}>
-              &times;
-            </button>
+            {showCloseButton && (
+              <button className={styles.closeButton} onClick={onClose}>
+                &times;
+              </button>
+            )}
           </div>
           <div className={styles.modalBody}>{children}</div>
           {footer && <div className={styles.modalFooter}>{footer}</div>}

@@ -25,6 +25,7 @@ const App: React.FC = () => {
         animationName="bounceInDown"
         animateDuration="0.9"
         size="sm"
+        showCloseButton={false}
       >
         <p>This is the modal content.</p>
       </Modal>
