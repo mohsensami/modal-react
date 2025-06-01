@@ -1,6 +1,6 @@
 {
   "name": "react-modal-animation",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": false,
   "description": "A customizable modal component built with React and TypeScript. The component uses CSS Modules for styling.",
   "main": "./dist/modal-react.umd.js",

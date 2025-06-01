@@ -60,8 +60,16 @@ const App: React.FC = () => {
         animationName="bounceInDown"
         animateDuration="0.4"
         size="md"
+        showCloseButton={true}
       >
         <p>This is the modal content.</p>
+        <p>You can customize the modal with various props:</p>
+        <ul>
+          <li>Control the close button visibility with showCloseButton</li>
+          <li>Choose different sizes (sm, md, lg)</li>
+          <li>Add custom animations</li>
+          <li>Include a custom footer</li>
+        </ul>
       </Modal>
     </div>
   );
@@ -84,8 +92,58 @@ Here are the props that can be passed to the `<Modal />` component:
 | `animationName`   | `string`     | True     | The name of the animation to use for the modal. Possible values include: 'fadeIn', 'fadeOut', 'slideInLeft', 'slideInRight', 'slideOutLeft', 'slideOutRight', and other valid animation names. |
 | `size`            | `string`     | False    | The size of the modal. Possible values: 'sm' (small), 'md' (medium), 'lg' (large). Default is 'md'.                                                                                            |
 | `animateDuration` | `string`     | False    | You can update the duration of animation. (Default is 0.3s)                                                                                                                                    |
+| `showCloseButton` | `boolean`    | False    | Determines whether to show the close button (×) in the modal header. Default is true.                                                                                                          |
 
 - [CSS Animation](https://animate.style/)
+
+## Example
+
+Here's a complete example showing different modal configurations:
+
+```javascript
+import React, { useState } from "react";
+import Modal from "Modal-react";
+
+const App: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <div className="App">
+      <h1>My App</h1>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={isModalOpen}
+        title="My Modal"
+        onClose={closeModal}
+        footer={<button onClick={closeModal}>Close</button>}
+        animationName="bounceInDown"
+        animateDuration="0.4"
+        size="md"
+        showCloseButton={true}
+      >
+        <p>This is the modal content.</p>
+        <p>You can customize the modal with various props:</p>
+        <ul>
+          <li>Control the close button visibility with showCloseButton</li>
+          <li>Choose different sizes (sm, md, lg)</li>
+          <li>Add custom animations</li>
+          <li>Include a custom footer</li>
+        </ul>
+      </Modal>
+    </div>
+  );
+};
+
+export default App;
+```
 
 ## Authors
 
