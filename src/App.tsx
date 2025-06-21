@@ -1,5 +1,5 @@
 // example/App.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "./components/Modal";
 
 const App = () => {
