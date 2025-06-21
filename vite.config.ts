@@ -1,27 +1,28 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import dts from 'vite-plugin-dts';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
-import path from 'path';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
-    build: {
-        lib: {
-            entry: path.resolve(__dirname, 'index.ts'),
-            name: 'modal-react',
-            fileName: (format) => `index.${format}.js`,
-        },
-        rollupOptions: {
-            external: ['react', 'react-dom'],
-            output: {
-                globals: {
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                },
-            },
-        },
-        sourcemap: true,
-        emptyOutDir: true,
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+    }),
+  ],
+  build: {
+    lib: {
+      entry: "src/components/Modal/index.ts",
+      name: "MohsensamiModal",
+      fileName: (format) => `modal.${format}.js`,
     },
-    plugins: [react(), dts(), libInjectCss()],
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+      },
+    },
+  },
 });

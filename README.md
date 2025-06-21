@@ -1,154 +1,54 @@
-# Modal React
+# React + TypeScript + Vite
 
-A customizable modal component built with React and TypeScript. The component uses CSS Modules for styling.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Manual Setup
+Currently, two official plugins are available:
 
-1- Add the Modal Component Files
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- Modal.tsx
-- Modal.module.css
-- App.tsx (Example usage)
-- App.css (Optional, for styling the example)
+## Expanding the ESLint configuration
 
-2- Ensure your project supports CSS Modules. This can typically be done by configuring your build tool (e.g., Webpack or Create React App).
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Demo
-
-<div align="center">
-    <img src="https://github.com/mrmohsensami/react-modal/raw/main/video.gif" width="">
-</div>
-
-## Installation
-
-To use the Modal component, you need to have a React environment set up. You can then add the Modal component files to your project.
-
-The package can be installed via [npm](https://github.com/npm/cli):
-
-```
-npm install modal-react
-```
-
-## Usage
-
-React Component:
-
-```javascript
-import React, { useState } from "react";
-import Modal from "Modal-react";
-
-const App: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  return (
-    <div className="App">
-      <h1>My App</h1>
-      <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={isModalOpen}
-        title="My Modal"
-        onClose={closeModal}
-        footer={<button onClick={closeModal}>Close</button>}
-        animationName="bounceInDown"
-        animateDuration="0.4"
-        size="md"
-        showCloseButton={true}
-      >
-        <p>This is the modal content.</p>
-        <p>You can customize the modal with various props:</p>
-        <ul>
-          <li>Control the close button visibility with showCloseButton</li>
-          <li>Choose different sizes (sm, md, lg)</li>
-          <li>Add custom animations</li>
-          <li>Include a custom footer</li>
-        </ul>
-      </Modal>
-    </div>
-  );
-};
-
-export default App;
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-## Props
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-Here are the props that can be passed to the `<Modal />` component:
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-| Name              | Type         | Required | Description                                                                                                                                                                                    |
-| :---------------- | :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `isOpen`          | `boolean`    | True     | Determines whether the modal is visible or not.                                                                                                                                                |
-| `title`           | `string`     | False    | The title of the modal, displayed in the header.                                                                                                                                               |
-| `children`        | `ReactNode`  | False    | The content to display inside the modal.                                                                                                                                                       |
-| `onClose`         | `() => void` | False    | Function to call when the modal is requested to be closed.                                                                                                                                     |
-| `footer`          | `ReactNode`  | False    | (optional): The content to display in the modal footer.                                                                                                                                        |
-| `animationName`   | `string`     | True     | The name of the animation to use for the modal. Possible values include: 'fadeIn', 'fadeOut', 'slideInLeft', 'slideInRight', 'slideOutLeft', 'slideOutRight', and other valid animation names. |
-| `size`            | `string`     | False    | The size of the modal. Possible values: 'sm' (small), 'md' (medium), 'lg' (large). Default is 'md'.                                                                                            |
-| `animateDuration` | `string`     | False    | You can update the duration of animation. (Default is 0.3s)                                                                                                                                    |
-| `showCloseButton` | `boolean`    | False    | Determines whether to show the close button (×) in the modal header. Default is true.                                                                                                          |
-
-- [CSS Animation](https://animate.style/)
-
-## Example
-
-Here's a complete example showing different modal configurations:
-
-```javascript
-import React, { useState } from "react";
-import Modal from "Modal-react";
-
-const App: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  return (
-    <div className="App">
-      <h1>My App</h1>
-      <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={isModalOpen}
-        title="My Modal"
-        onClose={closeModal}
-        footer={<button onClick={closeModal}>Close</button>}
-        animationName="bounceInDown"
-        animateDuration="0.4"
-        size="md"
-        showCloseButton={true}
-      >
-        <p>This is the modal content.</p>
-        <p>You can customize the modal with various props:</p>
-        <ul>
-          <li>Control the close button visibility with showCloseButton</li>
-          <li>Choose different sizes (sm, md, lg)</li>
-          <li>Add custom animations</li>
-          <li>Include a custom footer</li>
-        </ul>
-      </Modal>
-    </div>
-  );
-};
-
-export default App;
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-
-## Authors
-
-- [@mohsensami](https://github.com/mohsensami)
-
-## Contributing
-
-If you want to contribute to this project and make it better, your help is very welcome. Create an issue or submit a pull request.

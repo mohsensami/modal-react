@@ -1,33 +1,18 @@
+// example/App.jsx
 import React, { useState } from "react";
-import { Modal } from "./lib/Modal";
-// import './App.css';
+import Modal from "./components/Modal";
 
-const App: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="App">
-      <h1>My App</h1>
-      <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={isModalOpen}
-        title="My Modal"
-        onClose={closeModal}
-        footer={<button onClick={closeModal}>Close</button>}
-        animationName="bounceInDown"
-        animateDuration="0.9"
-        size="sm"
-        showCloseButton={false}
-      >
-        <p>This is the modal content.</p>
+    <div style={{ padding: "2rem" }}>
+      <h1>React Simple Modal Demo</h1>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <h2>Hello from Modal!</h2>
+        <p>This is a simple modal component.</p>
       </Modal>
     </div>
   );
