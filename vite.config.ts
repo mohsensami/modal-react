@@ -16,9 +16,11 @@ export default defineConfig({
       name: "MohsensamiModal",
       fileName: (format) => `modal.${format}.js`,
     },
+    cssCodeSplit: false, // Inlines all CSS
     rollupOptions: {
       external: ["react", "react-dom"],
       output: {
+        inlineDynamicImports: true,
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
