@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
+import { resolve } from "path";
 
 export default defineConfig({
   plugins: [
@@ -11,7 +12,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: "src/components/Modal/index.ts",
+      entry: resolve(__dirname, "src/index.ts"),
       name: "MohsensamiModal",
       fileName: (format) => `modal.${format}.js`,
     },

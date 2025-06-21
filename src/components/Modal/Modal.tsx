@@ -7,12 +7,10 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
+      if (e.key === "Escape") onClose();
     };
 
     if (isOpen) {
@@ -39,5 +37,3 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     </div>
   );
 };
-
-export default Modal;
