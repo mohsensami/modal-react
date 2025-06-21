@@ -1,13 +1,15 @@
 {
   "name": "@mohsensami/modal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "description": "A lightweight React modal component",
   "type": "module",
   "main": "./dist/modal.umd.js",
   "module": "./dist/modal.es.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
