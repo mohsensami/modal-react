@@ -1,11 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 import { resolve } from "path";
 
 export default defineConfig({
   plugins: [
     react(),
+    libInjectCss(), // Add this plugin
     dts({
       insertTypesEntry: true,
     }),
@@ -16,11 +18,9 @@ export default defineConfig({
       name: "MohsensamiModal",
       fileName: (format) => `modal.${format}.js`,
     },
-    cssCodeSplit: false, // Inlines all CSS
     rollupOptions: {
       external: ["react", "react-dom"],
       output: {
-        inlineDynamicImports: true,
         globals: {
           react: "React",
           "react-dom": "ReactDOM",

@@ -1,6 +1,6 @@
 {
   "name": "@mohsensami/modal",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "description": "A lightweight React modal component",
   "type": "module",
@@ -33,6 +33,7 @@
     "@vitejs/plugin-react-swc": "^3.9.0",
     "typescript": "^5.2.2",
     "vite": "^6.3.5",
-    "vite-plugin-dts": "^3.6.3"
+    "vite-plugin-dts": "^3.6.3",
+    "vite-plugin-lib-inject-css": "^2.2.2"
   }
 }
