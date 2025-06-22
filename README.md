@@ -1,54 +1,72 @@
-# React + TypeScript + Vite
+# @mohsensami/modal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight, accessible, and easy-to-use React modal component.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Simple API
+- Keyboard accessible (closes on Escape key)
+- Prevents background scrolling when open
+- Click outside to close
+- Customizable content
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install @mohsensami/modal
+# or
+yarn add @mohsensami/modal
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> **Peer dependencies:**
+>
+> - React >=16.8.0
+> - ReactDOM >=16.8.0
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Usage
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```jsx
+import { Modal } from "@mohsensami/modal";
+import { useState } from "react";
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <h2>My Modal Content</h2>
+      </Modal>
+    </div>
+  );
+}
+
+export default App;
 ```
+
+## Props
+
+| Name     | Type              | Required | Description                                 |
+| -------- | ----------------- | -------- | ------------------------------------------- |
+| isOpen   | `boolean`         | Yes      | Controls whether the modal is open          |
+| onClose  | `() => void`      | Yes      | Called when the modal requests to be closed |
+| children | `React.ReactNode` | Yes      | Modal content                               |
+
+## Behavior
+
+- Clicking the overlay or the close button will call `onClose`.
+- Pressing the Escape key will call `onClose`.
+- When open, background scrolling is disabled.
+
+## Styling
+
+The modal comes with default styles. To override, use CSS modules or target the following classes:
+
+- `.modalOverlay`
+- `.modalContent`
+- `.modalClose`
+
+## License
+
+MIT
