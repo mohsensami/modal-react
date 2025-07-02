@@ -3,16 +3,31 @@ import { useState } from "react";
 import Modal from "./components/Modal";
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>React Simple Modal Demo</h1>
-      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <button onClick={openModal}>Open Modal</button>
 
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <h2>Hello from Modal!</h2>
-        <p>This is a simple modal component.</p>
+      <Modal
+        isOpen={isModalOpen}
+        title="My Modal"
+        onClose={closeModal}
+        footer={<button onClick={closeModal}>Close</button>}
+        animationName="bounceInDown"
+        animateDuration="0.9"
+        size="sm"
+        showCloseButton={false}
+      >
+        <p>This is the modal content.</p>
       </Modal>
     </div>
   );

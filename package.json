@@ -1,6 +1,6 @@
 {
   "name": "@mohsensami/modal",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "private": false,
   "description": "A lightweight React modal component",
   "type": "module",
@@ -35,5 +35,8 @@
     "vite": "^6.3.5",
     "vite-plugin-dts": "^3.6.3",
     "vite-plugin-lib-inject-css": "^2.2.2"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1"
   }
 }
