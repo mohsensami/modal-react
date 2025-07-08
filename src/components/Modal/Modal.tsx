@@ -15,6 +15,7 @@ interface ModalProps {
   animateDuration?: string;
   size?: ModalSize;
   showCloseButton?: boolean;
+  fullSize?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -27,6 +28,7 @@ export const Modal: React.FC<ModalProps> = ({
   animateDuration = "0.3",
   size = "md",
   showCloseButton = true,
+  fullSize = false,
 }) => {
   if (!isOpen) {
     return null;
@@ -45,7 +47,7 @@ export const Modal: React.FC<ModalProps> = ({
         <div
           className={`${styles.modalContent} ${
             styles[`modalContent${size.toUpperCase()}`]
-          }`}
+          }${fullSize ? ` ${styles.fullSize}` : ""}`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className={styles.modalHeader}>

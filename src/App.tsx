@@ -26,6 +26,7 @@ const App = () => {
         animateDuration="0.9"
         size="sm"
         showCloseButton={false}
+        fullSize
       >
         <p>This is the modal content.</p>
       </Modal>
