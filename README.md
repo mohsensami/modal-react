@@ -61,6 +61,7 @@ const App: React.FC = () => {
         animateDuration="0.4"
         size="md"
         showCloseButton={true}
+        fullSize={true}
       >
         <p>This is the modal content.</p>
         <p>You can customize the modal with various props:</p>
@@ -93,6 +94,7 @@ Here are the props that can be passed to the `<Modal />` component:
 | `size`            | `string`     | False    | The size of the modal. Possible values: 'sm' (small), 'md' (medium), 'lg' (large). Default is 'md'.                                                                                            |
 | `animateDuration` | `string`     | False    | You can update the duration of animation. (Default is 0.3s)                                                                                                                                    |
 | `showCloseButton` | `boolean`    | False    | Determines whether to show the close button (×) in the modal header. Default is true.                                                                                                          |
+| `fullSize`        | `boolean`    | False    | If true, the modal will take up 100% of the viewport's width and height. Default is false.                                                                                                     |
 
 - [CSS Animation](https://animate.style/)
 
@@ -128,6 +130,7 @@ const App: React.FC = () => {
         animateDuration="0.4"
         size="md"
         showCloseButton={true}
+        fullSize={true}
       >
         <p>This is the modal content.</p>
         <p>You can customize the modal with various props:</p>
@@ -143,6 +146,14 @@ const App: React.FC = () => {
 };
 
 export default App;
+```
+
+You can also make the modal take up the entire viewport by using the `fullSize` prop:
+
+```jsx
+<Modal isOpen={isModalOpen} onClose={closeModal} fullSize>
+  <p>This modal takes up the full screen!</p>
+</Modal>
 ```
 
 ## Authors

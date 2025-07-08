@@ -1,6 +1,6 @@
 {
   "name": "@mohsensami/modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "A lightweight React modal component",
   "type": "module",
