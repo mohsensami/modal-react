@@ -1,40 +1,31 @@
 {
   "name": "@mohsensami/modal",
-  "version": "1.0.1",
-  "private": false,
-  "description": "A lightweight React modal component",
+  "version": "0.1.0",
+  "description": "",
   "type": "module",
-  "main": "./dist/modal.umd.js",
-  "module": "./dist/modal.es.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/modal.es.js",
-      "require": "./dist/modal.umd.js"
-    }
-  },
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "prepare": "npm run build"
+    "build": "rollup -c"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react-swc": "^3.9.0",
-    "typescript": "^5.2.2",
-    "vite": "^6.3.5",
-    "vite-plugin-dts": "^3.6.3",
-    "vite-plugin-lib-inject-css": "^2.2.2"
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/react": "^19.1.8",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "rollup": "^3.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "animate.css": "^4.1.1"

@@ -1,5 +1,6 @@
-import React, { ReactNode } from "react";
-import styles from "./Modal.module.css";
+import * as React from "react";
+import { ReactNode } from "react";
+import "./Modal.css";
 
 import "animate.css";
 
@@ -35,7 +36,7 @@ export const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <div className={styles.modalBackdrop} onClick={onClose}>
+    <div className="modalBackdrop" onClick={onClose}>
       <div
         style={
           {
@@ -45,21 +46,21 @@ export const Modal: React.FC<ModalProps> = ({
         className={`animate__animated animate__${animationName}`}
       >
         <div
-          className={`${styles.modalContent} ${
-            styles[`modalContent${size.toUpperCase()}`]
-          }${fullSize ? ` ${styles.fullSize}` : ""}`}
-          onClick={(e) => e.stopPropagation()}
+          className={`modalContent modalContent${size.toUpperCase()}${
+            fullSize ? " fullSize" : ""
+          }`}
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
         >
-          <div className={styles.modalHeader}>
-            <h2 className={styles.modalTitle}>{title}</h2>
+          <div className="modalHeader">
+            <h2 className="modalTitle">{title}</h2>
             {showCloseButton && (
-              <button className={styles.closeButton} onClick={onClose}>
+              <button className="closeButton" onClick={onClose}>
                 &times;
               </button>
             )}
           </div>
-          <div className={styles.modalBody}>{children}</div>
-          {footer && <div className={styles.modalFooter}>{footer}</div>}
+          <div className="modalBody">{children}</div>
+          {footer && <div className="modalFooter">{footer}</div>}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 // example/App.jsx
 import { useState } from "react";
-import Modal from "./components/Modal";
+import { Modal } from "@mohsensami/modal";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
