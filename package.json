@@ -1,6 +1,6 @@
 {
   "name": "@mohsensami/modal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "type": "module",
   "private": false,
@@ -11,13 +11,14 @@
     "build": "rollup -c"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@types/jalaali-js": "^1.2.0",
     "@types/react": "^19.1.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -28,6 +29,6 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "animate.css": "^4.1.1"
+    "jalaali-js": "^1.2.8"
   }
 }
