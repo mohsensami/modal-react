@@ -1,7 +1,7 @@
 {
   "name": "@mohsensami/modal",
-  "version": "0.1.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "A lightweight React modal component",
   "type": "module",
   "private": false,
   "main": "dist/index.js",
@@ -29,6 +29,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "jalaali-js": "^1.2.8"
   }
 }
